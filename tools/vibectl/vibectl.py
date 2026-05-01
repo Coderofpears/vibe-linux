@@ -242,9 +242,10 @@ def cmd_plugins_run(args: argparse.Namespace) -> int:
     if not runtime:
         raise VibeError("vibe-plugin-runtime not found.")
 
-    command = [runtime, "run", str(ref.path), *args.plugin_args]
     if args.plugin_args:
         command = [runtime, "run", str(ref.path), "--", *args.plugin_args]
+    else:
+        command = [runtime, "run", str(ref.path)]
     return run(command).returncode
 
 
