@@ -1,0 +1,9 @@
+[PlasmaViews][Panel 1]
+alignment=132
+floating=0
+panelLengthMode=2
+thickness=44
+
+[PlasmaViews][Panel 1][Defaults]
+applets=org.kde.plasma.kickoff,org.kde.plasma.icontasks,org.kde.plasma.marginsseparator,org.kde.plasma.systemtray,org.kde.plasma.digitalclock
+

@@ -1,0 +1,14 @@
+[General]
+ColorScheme=BreezeLight
+Name=Breeze Light
+TerminalApplication=konsole
+
+[KDE]
+SingleClick=false
+
+[Icons]
+Theme=breeze
+
+[PreviewSettings]
+MaximumRemoteSize=0
+

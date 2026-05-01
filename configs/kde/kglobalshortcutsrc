@@ -1,0 +1,52 @@
+[kaccess]
+Toggle Screen Reader=none,none,Toggle Screen Reader
+
+[kcm_touchpad]
+Disable Touchpad=none,Touchpad Off,Disable Touchpad
+Enable Touchpad=none,Touchpad On,Enable Touchpad
+Toggle Touchpad=none,Touchpad Toggle,Toggle Touchpad
+
+[kded5]
+Show System Activity=Ctrl+Esc,Ctrl+Esc,Show System Activity
+
+[khotkeys]
+{d03619b6-9b3c-48cc-9d9c-a2aadb485550}=Meta+R,Meta+R,Run Command
+
+[kmix]
+decrease_volume=Volume Down,Volume Down,Decrease Volume
+increase_volume=Volume Up,Volume Up,Increase Volume
+mute=Volume Mute,Volume Mute,Mute
+
+[ksmserver]
+Lock Session=Meta+L,Screensaver,Lock Session
+
+[kwin]
+Expose=Meta+Tab,Meta+Tab,Toggle Present Windows
+Overview=Meta+W,Meta+W,Toggle Overview
+Window Close=Alt+F4,Alt+F4,Close Window
+Window Maximize=Meta+Up,Meta+Up,Maximize Window
+Window Minimize=Meta+Down,Meta+Down,Minimize Window
+Window Quick Tile Left=Meta+Left,Meta+Left,Quick Tile Window to the Left
+Window Quick Tile Right=Meta+Right,Meta+Right,Quick Tile Window to the Right
+Window Show Desktop=Meta+D,Meta+D,Show Desktop
+Window to Desktop 1=Meta+Shift+1,Meta+Shift+1,Window to Desktop 1
+Window to Desktop 2=Meta+Shift+2,Meta+Shift+2,Window to Desktop 2
+Switch to Desktop 1=Meta+1,Meta+1,Switch to Desktop 1
+Switch to Desktop 2=Meta+2,Meta+2,Switch to Desktop 2
+
+[org.kde.dolphin.desktop]
+_launch=Meta+E,Meta+E,Dolphin
+
+[org.kde.konsole.desktop]
+_launch=Ctrl+Alt+T,Ctrl+Alt+T,Konsole
+
+[org.kde.plasma.emojier.desktop]
+_launch=Meta+.,Meta+.,Emoji Selector
+
+[org.kde.spectacle.desktop]
+RectangularRegionScreenShot=Meta+Shift+S,Meta+Shift+S,Capture Rectangular Region
+_launch=Print,Print,Launch Spectacle
+
+[org.kde.systemsettings.desktop]
+_launch=Meta+I,Meta+I,System Settings
+

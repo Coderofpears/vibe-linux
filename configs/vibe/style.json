@@ -1,0 +1,23 @@
+{
+  "name": "Vibe Default",
+  "license": "MIT",
+  "desktop_personality": "familiar, clean, direct",
+  "ux_reference": "Windows-like taskbar and shortcuts with KDE Plasma control and Arch transparency",
+  "colors": {
+    "accent": "#0078d4",
+    "accent_alt": "#2f8fed",
+    "surface": "#f7f9fc",
+    "surface_dark": "#202124",
+    "text": "#1f2328",
+    "success": "#16833a",
+    "warning": "#b26a00",
+    "danger": "#d1242f"
+  },
+  "copy_rules": [
+    "Use friendly names first and technical names second.",
+    "Prefer short action labels.",
+    "Avoid jokes in system prompts and security prompts.",
+    "Explain destructive actions before asking for confirmation."
+  ]
+}
+

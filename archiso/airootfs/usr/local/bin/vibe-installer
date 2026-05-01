@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+exec python /opt/vibe-linux/installer/vibe-installer.py "$@"
+

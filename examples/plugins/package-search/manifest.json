@@ -1,0 +1,14 @@
+{
+  "id": "dev.vibe.package-search",
+  "name": "Package Search",
+  "version": "1.0.0",
+  "entry": "plugin.py",
+  "runtime": "python",
+  "permissions": {
+    "filesystem": [],
+    "network": true,
+    "packages": true,
+    "process": false
+  }
+}
+

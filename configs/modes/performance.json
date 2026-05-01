@@ -1,0 +1,17 @@
+{
+  "name": "Performance Mode",
+  "description": "Full desktop with responsiveness-oriented service and power defaults.",
+  "enable_services": ["NetworkManager.service", "sddm.service", "touchegg.service"],
+  "disable_services": [],
+  "kde": {
+    "animations": true,
+    "baloo": true,
+    "compositor": "opengl"
+  },
+  "power": {
+    "cpu_governor": "performance"
+  },
+  "plugin_runtime": {
+    "background_services": true
+  }
+}

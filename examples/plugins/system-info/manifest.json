@@ -1,0 +1,19 @@
+{
+  "id": "dev.vibe.system-info",
+  "name": "System Info",
+  "version": "1.0.0",
+  "entry": "plugin.py",
+  "runtime": "python",
+  "permissions": {
+    "filesystem": [
+      {
+        "path": "/etc/os-release",
+        "access": "read"
+      }
+    ],
+    "network": false,
+    "packages": false,
+    "process": false
+  }
+}
+

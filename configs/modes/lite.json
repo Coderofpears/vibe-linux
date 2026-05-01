@@ -1,0 +1,14 @@
+{
+  "name": "Lite Mode",
+  "description": "Reduced background services and lighter desktop behavior for constrained systems.",
+  "enable_services": ["NetworkManager.service", "sddm.service"],
+  "disable_services": ["bluetooth.service"],
+  "kde": {
+    "animations": false,
+    "baloo": false,
+    "compositor": "xrender"
+  },
+  "plugin_runtime": {
+    "background_services": false
+  }
+}

@@ -1,0 +1,15 @@
+pkgname=vibe-plugin-runtime
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Sandboxed runtime for Vibe-Linux plugins"
+arch=('any')
+url="https://example.invalid/vibe-linux"
+license=('MIT')
+depends=('python' 'bubblewrap')
+source=("vibe-plugin-runtime.py")
+sha256sums=('SKIP')
+
+package() {
+  install -Dm755 "${srcdir}/vibe-plugin-runtime.py" "${pkgdir}/usr/bin/vibe-plugin-runtime"
+}
+

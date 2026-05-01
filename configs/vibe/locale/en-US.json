@@ -1,0 +1,19 @@
+{
+  "app_name": "Vibe-Linux OS",
+  "launcher": "Start",
+  "settings": "Settings",
+  "files": "Files",
+  "terminal": "Terminal",
+  "updates": "Updates",
+  "plugins": "Plugins",
+  "assistant": "Vibe Copilot",
+  "install_full": "Recommended install",
+  "install_custom": "Custom install",
+  "mode_full": "Full mode",
+  "mode_lite": "Lite mode",
+  "mode_performance": "Performance mode",
+  "update_system": "Update your system",
+  "install_apps": "Install apps",
+  "run_diagnostics": "Run diagnostics"
+}
+

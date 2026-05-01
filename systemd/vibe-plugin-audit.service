@@ -1,0 +1,13 @@
+[Unit]
+Description=Vibe plugin audit log initializer
+ConditionPathExists=/usr/bin/vibe-plugin-runtime
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/install -d -m 0750 -o root -g root /var/log/vibe
+ExecStart=/usr/bin/touch /var/log/vibe/plugins.log
+ExecStart=/usr/bin/chmod 0640 /var/log/vibe/plugins.log
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,23 @@
+{
+  "id": "dev.vibe.copilot",
+  "name": "Vibe Copilot",
+  "version": "0.1.0",
+  "entry": "plugin.py",
+  "runtime": "python",
+  "permissions": {
+    "filesystem": [
+      {
+        "path": "/etc/os-release",
+        "access": "read"
+      },
+      {
+        "path": "/proc/meminfo",
+        "access": "read"
+      }
+    ],
+    "network": false,
+    "packages": false,
+    "process": false
+  }
+}
+

@@ -1,0 +1,15 @@
+pkgname=vibectl
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Unified system management CLI for Vibe-Linux OS"
+arch=('any')
+url="https://example.invalid/vibe-linux"
+license=('MIT')
+depends=('python' 'pacman' 'systemd')
+source=("vibectl.py")
+sha256sums=('SKIP')
+
+package() {
+  install -Dm755 "${srcdir}/vibectl.py" "${pkgdir}/usr/bin/vibectl"
+}
+

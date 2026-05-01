@@ -1,0 +1,15 @@
+[Compositing]
+AnimationSpeed=2
+Backend=OpenGL
+Enabled=true
+GLCore=true
+
+[Desktops]
+Number=2
+Rows=1
+
+[Windows]
+BorderSnapZone=10
+ElectricBorders=false
+RollOverDesktops=false
+

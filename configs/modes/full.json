@@ -1,0 +1,14 @@
+{
+  "name": "Full Mode",
+  "description": "KDE Plasma with full desktop effects, indexing, and developer conveniences enabled.",
+  "enable_services": ["NetworkManager.service", "sddm.service", "touchegg.service"],
+  "disable_services": [],
+  "kde": {
+    "animations": true,
+    "baloo": true,
+    "compositor": "opengl"
+  },
+  "plugin_runtime": {
+    "background_services": true
+  }
+}
