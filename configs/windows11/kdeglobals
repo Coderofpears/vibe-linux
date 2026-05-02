@@ -1,0 +1,28 @@
+[General]
+ColorScheme=BreezeLight
+Name=Breeze Light
+TerminalApplication=konsole
+fixed=Segoe UI,10,-1,5,50,0,0,0,0,0
+font=Segoe UI,10,-1,5,50,0,0,0,0,0
+menuFont=Segoe UI,10,-1,5,50,0,0,0,0,0
+smallestReadableFont=Segoe UI,8,-1,5,50,0,0,0,0,0
+toolBarFont=Segoe UI,9,-1,5,50,0,0,0,0,0
+
+[KDE]
+SingleClick=true
+WidgetStyle=Breeze
+
+[Icons]
+Theme=breeze
+
+[PreviewSettings]
+MaximumRemoteSize=0
+
+[Colors:Button]
+BackgroundColor=240,240,240
+
+[Colors:View]
+BackgroundColor=255,255,255
+
+[Colors:Window]
+BackgroundColor=240,240,240

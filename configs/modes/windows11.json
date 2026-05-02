@@ -1,0 +1,48 @@
+{
+  "name": "Windows 11 UI/UX Preset",
+  "description": "KDE Plasma configured to look and feel like Windows 11",
+  "author": "Vibe-Linux",
+  "version": "1.0",
+  "target": "kde",
+  "includes": {
+    "kdeglobals": "configs/windows11/kdeglobals",
+    "plasmashellrc": "configs/windows11/plasmashellrc",
+    "kwinrc": "configs/windows11/kwinrc",
+    "kglobalshortcutsrc": "configs/windows11/kglobalshortcutsrc",
+    "kscreenlockerrc": "configs/windows11/kscreenlockerrc",
+    "sddm.conf": "configs/windows11/sddm.conf"
+  },
+  "settings": {
+    "theme": "BreezeLight",
+    "colorScheme": "BreezeLight",
+    "font": "Segoe UI",
+    "iconTheme": "breeze",
+    "cursorTheme": "breeze_cursors",
+    "windowDecoration": "BreezeLight",
+    "plasmaTheme": "default",
+    "panel": {
+      "position": "bottom",
+      "thickness": "48px",
+      "autoHide": false,
+      "windowButtons": [
+        "appmenu",
+        "taskmanager",
+        "systemtray",
+        "digitalclock"
+      ]
+    },
+    "desktopEffects": {
+      "enabled": true,
+      "animations": "smooth",
+      "fadeWindows": true
+    }
+  },
+  "uiAspects": [
+    "Bottom taskbar with centered task buttons (similar to Windows 11)",
+    "Light color scheme with Windows 11 gray tones",
+    "Single-click to open (Windows-style)",
+    "Minimalist window decorations",
+    "Windows-style keyboard shortcuts (Meta key + arrows, etc.)",
+    "Segoe UI font for familiar Windows appearance"
+  ]
+}

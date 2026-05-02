@@ -34,6 +34,29 @@ python tools/vibe-plugin-runtime/vibe-plugin-runtime.py --help
 ./scripts/smoke-test.sh
 ```
 
+### Multi-Architecture Builds
+
+Vibe-Linux supports building for multiple architectures:
+
+#### Build for x86_64 (Intel/AMD)
+```bash
+sudo ./scripts/build-iso-arch.sh x86_64
+```
+
+#### Build for ARM64 (aarch64)
+```bash
+sudo ./scripts/build-iso-arch.sh aarch64
+```
+
+#### Build for all supported architectures
+```bash
+sudo ./scripts/build-all-iso.sh
+# or specify architectures:
+sudo ./scripts/build-all-iso.sh x86_64 aarch64
+```
+
+ISO outputs are written to `out/` with architecture-specific naming.
+
 ## Repository Layout
 
 ```text
@@ -71,3 +94,17 @@ See [docs/windows-alternative.md](docs/windows-alternative.md). The default UX m
 - Settings: KDE System Settings with `Super+I`.
 - Updates: `vibectl update`.
 - Copilot-style help: `vibectl plugins run --once dev.vibe.copilot`.
+
+### Windows 11 UI/UX Preset
+
+A complete KDE Plasma configuration that replicates Windows 11's look and feel is available in `configs/windows11/`. This preset is completely separate from the default KDE and Hyprland configurations.
+
+**Features:**
+- Bottom taskbar with centered task buttons
+- Light color scheme with Windows 11 gray tones
+- Segoe UI font for authentic Windows typography
+- Windows-style keyboard shortcuts (Meta+Left/Right for snap, etc.)
+- Single-click file opening
+- Familiar window decorations and animations
+
+See [configs/windows11/README.md](configs/windows11/README.md) for installation and customization instructions.
