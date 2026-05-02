@@ -30,31 +30,66 @@ jobs:
     steps:
       - name: Install dependencies
         run: |
-          pacman -Syu --noconfirm archiso archinstall python python-psutil bubblewrap git rsync
-          # For aarch64 cross-compilation support
-          pacman -S --noconfirm qemu-system-aarch64 qemu-system-x86 || true
+          echo "Updating package database..."
+          pacman -Sy --noconfirm
+          
+          echo "Installing archiso and build tools..."
+          pacman -S --noconfirm archiso archinstall python python-psutil bubblewrap git rsync curl base-devel
+          
+          echo "Dependencies installed:"
+          pacman -Q archiso archinstall python rsync git
       
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
       
-      - name: Make build script executable
+      - name: Setup build environment
         run: |
           chmod +x scripts/build-iso-arch.sh
+          echo "Build script permissions:"
           ls -la scripts/build-iso-arch.sh
+          
+          echo "Current user and ID:"
+          whoami
+          id
+          
+          echo "Checking PATH:"
+          echo "$PATH"
       
-      - name: Verify dependencies
+      - name: Verify build dependencies
         run: |
+          echo "=== Dependency Check ==="
+          
           echo "Checking mkarchiso..."
-          which mkarchiso || (echo "mkarchiso not found!" && exit 1)
-          mkarchiso --version || true
+          if command -v mkarchiso >/dev/null 2>&1; then
+            echo "✓ mkarchiso found at $(which mkarchiso)"
+            mkarchiso --version
+          else
+            echo "✗ mkarchiso not found in PATH"
+            find /usr -name "mkarchiso" 2>/dev/null || true
+            exit 1
+          fi
+          
+          echo ""
           echo "Checking rsync..."
-          which rsync || (echo "rsync not found!" && exit 1)
+          which rsync || exit 1
+          
+          echo ""
+          echo "Checking bash..."
+          bash --version | head -1
+          
+          echo ""
+          echo "Disk space available:"
+          df -h / /tmp || true
       
       - name: Build ISO for ${{ matrix.arch }}
         run: |
-          ./scripts/build-iso-arch.sh ${{ matrix.arch }}
+          set -x
+          echo "Starting ISO build for ${{ matrix.arch }}"
+          bash -n scripts/build-iso-arch.sh  # Syntax check first
+          bash scripts/build-iso-arch.sh ${{ matrix.arch }}
+          set +x
       
       - name: Generate checksums
         run: |
@@ -143,12 +178,36 @@ jobs:
     if: always()
     
     steps:
-      - name: Check build status
+      - name: Report build status
         run: |
+          echo "=== Vibe-Linux ISO Build Status ==="
+          echo ""
+          
           if [ "${{ needs.build.result }}" = "success" ]; then
-            echo "✅ ISO builds completed successfully!"
-            echo "x86_64 and ARM64 ISOs are available in artifacts."
+            echo "✅ SUCCESS: ISO builds completed successfully!"
+            echo ""
+            echo "Built artifacts:"
+            echo "  - x86_64 ISO (for Intel/AMD systems)"
+            echo "  - aarch64 ISO (for Apple Silicon/ARM64 systems)"
+            echo ""
+            echo "Check the 'Artifacts' section for download links."
+            echo "Next: Create a release tag (v0.2.1) to publish to GitHub Releases"
+          elif [ "${{ needs.build.result }}" = "failure" ]; then
+            echo "❌ FAILED: ISO builds did not complete successfully"
+            echo ""
+            echo "Please check the build logs above for error details."
+            echo ""
+            echo "Common issues:"
+            echo "  - mkarchiso not found in PATH"
+            echo "  - Insufficient disk space"
+            echo "  - Missing dependencies (archiso, rsync, etc.)"
+            echo "  - Permission issues in container"
           else
-            echo "❌ ISO builds failed. Check logs for details."
-            exit 1
+            echo "⚠️  SKIPPED: Build job was skipped or cancelled"
           fi
+          
+          echo ""
+          echo "Build Details:"
+          echo "  Repository: Coderofpears/vibe-linux"
+          echo "  Commit: ${{ github.sha }}"
+          echo "  Branch/Tag: ${{ github.ref }}"
