@@ -21,9 +21,13 @@ Vibe-Linux brings the familiar comfort of Windows 11 and macOS to Linux, with th
 - **Multiple Presets**: Windows 11, macOS, or default KDE Plasma
 - **vibectl**: Unified command-line tool for updates, packages, and plugins
 - **Plugin System**: Safe, sandboxed third-party extensions
-- **Performance Profiles**: Full, Lite, or Performance modes
+- **Performance Profiles**: Full, Lite, Performance, Gaming, or Development modes
 - **Multi-Architecture Support**: Install on Intel, AMD, Apple Silicon, or ARM servers
 - **Vibe Copilot**: AI-powered assistant plugin (local-first)
+- **System Monitor**: Real-time CPU, RAM, disk, and temperature monitoring
+- **Quick Settings**: Fast access to WiFi, Bluetooth, brightness, and system settings
+- **System Cleaner**: Analyze and optimize storage usage
+- **First-Run Wizard**: Personalize your system on first login
 
 ## Installation
 

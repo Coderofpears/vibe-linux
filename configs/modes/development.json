@@ -1,0 +1,26 @@
+{
+  "name": "Development Mode",
+  "description": "Optimized for developers - includes build tools, extra RAM, high performance, extended monitors",
+  "enable_services": [
+    "NetworkManager.service",
+    "sddm.service",
+    "docker.service"
+  ],
+  "disable_services": [],
+  "kde": {
+    "animations": true,
+    "baloo": true,
+    "compositor": "opengl"
+  },
+  "kernel_params": [
+    "cpu_scaling_governor=performance"
+  ],
+  "environment": {
+    "EDITOR": "nano",
+    "VISUAL": "nano"
+  },
+  "plugin_runtime": {
+    "background_services": true
+  },
+  "notes": "Includes development tools, enables all KDE features, supports multiple monitors, Docker integration."
+}

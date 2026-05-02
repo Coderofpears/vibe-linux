@@ -1,0 +1,22 @@
+{
+  "id": "vibe.quick-settings",
+  "name": "Quick Settings",
+  "version": "1.0.0",
+  "description": "Quick access to common system settings and toggles",
+  "author": "Vibe-Linux Team",
+  "license": "MIT",
+  "entry": "settings.py",
+  "runtime": "python",
+  "permissions": {
+    "filesystem": [
+      {
+        "path": "/sys/class/backlight",
+        "access": "write"
+      }
+    ],
+    "network": false,
+    "packages": false,
+    "process": true,
+    "system": false
+  }
+}

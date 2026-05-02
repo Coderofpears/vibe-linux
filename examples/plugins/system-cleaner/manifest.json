@@ -1,0 +1,30 @@
+{
+  "id": "vibe.system-cleaner",
+  "name": "System Cleaner",
+  "version": "1.0.0",
+  "description": "Clean up temporary files, cache, and optimize system",
+  "author": "Vibe-Linux Team",
+  "license": "MIT",
+  "entry": "cleaner.py",
+  "runtime": "python",
+  "permissions": {
+    "filesystem": [
+      {
+        "path": "/home",
+        "access": "read"
+      },
+      {
+        "path": "/tmp",
+        "access": "read"
+      },
+      {
+        "path": "/var/cache",
+        "access": "read"
+      }
+    ],
+    "network": false,
+    "packages": false,
+    "process": false,
+    "system": false
+  }
+}

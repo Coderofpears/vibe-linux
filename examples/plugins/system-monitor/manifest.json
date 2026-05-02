@@ -1,0 +1,26 @@
+{
+  "id": "vibe.system-monitor",
+  "name": "System Monitor",
+  "version": "1.0.0",
+  "description": "Real-time system resource monitoring (CPU, RAM, disk, temperature)",
+  "author": "Vibe-Linux Team",
+  "license": "MIT",
+  "entry": "monitor.py",
+  "runtime": "python",
+  "permissions": {
+    "filesystem": [
+      {
+        "path": "/proc",
+        "access": "read"
+      },
+      {
+        "path": "/sys",
+        "access": "read"
+      }
+    ],
+    "network": false,
+    "packages": false,
+    "process": false,
+    "system": false
+  }
+}

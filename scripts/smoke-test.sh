@@ -12,9 +12,14 @@ python3 tools/vibe-plugin-runtime/vibe-plugin-runtime.py --help >/dev/null
 python3 tools/vibe-plugin-runtime/vibe-plugin-runtime.py validate examples/plugins/system-info >/dev/null
 python3 tools/vibe-plugin-runtime/vibe-plugin-runtime.py validate examples/plugins/package-search >/dev/null
 python3 tools/vibe-plugin-runtime/vibe-plugin-runtime.py validate examples/plugins/vibe-copilot >/dev/null
+python3 tools/vibe-plugin-runtime/vibe-plugin-runtime.py validate examples/plugins/system-monitor >/dev/null
+python3 tools/vibe-plugin-runtime/vibe-plugin-runtime.py validate examples/plugins/quick-settings >/dev/null
+python3 tools/vibe-plugin-runtime/vibe-plugin-runtime.py validate examples/plugins/system-cleaner >/dev/null
 python3 -m json.tool configs/modes/full.json >/dev/null
 python3 -m json.tool configs/modes/lite.json >/dev/null
 python3 -m json.tool configs/modes/performance.json >/dev/null
+python3 -m json.tool configs/modes/gaming.json >/dev/null
+python3 -m json.tool configs/modes/development.json >/dev/null
 python3 -m json.tool configs/modes/windows11.json >/dev/null
 python3 -m json.tool configs/modes/macos.json >/dev/null
 python3 -m json.tool configs/vibe/locale/en-US.json >/dev/null

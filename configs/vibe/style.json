@@ -1,23 +1,72 @@
 {
   "name": "Vibe Default",
   "license": "MIT",
-  "desktop_personality": "familiar, clean, direct",
+  "version": "1.0",
+  "desktop_personality": "familiar, clean, direct, modern",
   "ux_reference": "Windows-like taskbar and shortcuts with KDE Plasma control and Arch transparency",
+  "branding": {
+    "name": "Vibe",
+    "tagline": "A modern Linux that feels like home",
+    "website": "https://github.com/Coderofpears/vibe-linux"
+  },
   "colors": {
-    "accent": "#0078d4",
+    "primary": "#00a3ff",
+    "primary_dark": "#0078d4",
+    "primary_light": "#4db8ff",
+    "accent": "#00d4aa",
     "accent_alt": "#2f8fed",
     "surface": "#f7f9fc",
     "surface_dark": "#202124",
+    "surface_variant": "#e8eaed",
     "text": "#1f2328",
+    "text_secondary": "#5f6368",
     "success": "#16833a",
-    "warning": "#b26a00",
-    "danger": "#d1242f"
+    "warning": "#f57c00",
+    "danger": "#d1242f",
+    "info": "#00a3ff",
+    "link": "#1a73e8"
+  },
+  "gradients": {
+    "vibe_primary": "linear-gradient(135deg, #00a3ff 0%, #0078d4 100%)",
+    "vibe_accent": "linear-gradient(135deg, #00d4aa 0%, #00a3ff 100%)",
+    "subtle": "linear-gradient(135deg, #f7f9fc 0%, #e8eaed 100%)"
+  },
+  "typography": {
+    "font_family": "Segoe UI, SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif",
+    "font_mono": "Fira Code, Courier New, monospace",
+    "font_sizes": {
+      "heading_xl": "32px",
+      "heading_lg": "24px",
+      "heading_md": "20px",
+      "heading_sm": "16px",
+      "body": "14px",
+      "small": "12px",
+      "caption": "11px"
+    }
+  },
+  "spacing": {
+    "xs": "4px",
+    "sm": "8px",
+    "md": "16px",
+    "lg": "24px",
+    "xl": "32px"
   },
   "copy_rules": [
     "Use friendly names first and technical names second.",
     "Prefer short action labels.",
     "Avoid jokes in system prompts and security prompts.",
-    "Explain destructive actions before asking for confirmation."
-  ]
+    "Explain destructive actions before asking for confirmation.",
+    "Be inclusive and welcoming in all copy.",
+    "Use 'you' to address users directly.",
+    "Avoid technical jargon where possible."
+  ],
+  "tone_and_voice": {
+    "personality": "Helpful, modern, approachable",
+    "attitude": "Confident but not arrogant",
+    "examples": [
+      "✓ 'Let's get you set up' (warm, inviting)",
+      "✗ 'Configure your system' (cold, technical)"
+    ]
+  }
 }
 
