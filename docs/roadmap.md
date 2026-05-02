@@ -87,9 +87,23 @@ Vibe-Linux is now a **finished, production-ready distribution** with enterprise-
 - [ ] Plugin auto-updates
 - [ ] Community plugin showcase
 
-## 📋 Future Features (v0.4.0+)
+## 📋 Future Features (v0.3.0 - v1.0.0)
 
-### Long-term Vision
+### Community & Ecosystem (v0.3.0 - 2026)
+- [ ] Internationalization (i18n) - Support for multiple languages
+- [ ] Plugin marketplace - Community plugin discovery and sharing
+- [ ] Additional presets and themes - GNOME, Cinnamon, Budgie variants
+- [ ] Community growth - User forums, wiki, local meetups
+- [ ] Localized documentation in 5+ languages
+
+### Commercial Services (v0.4.0 - 2026-2027)
+- [ ] Enterprise support options - Professional SLAs and support
+- [ ] Commercial services - Consulting, custom builds, training
+- [ ] Premium plugins - Advanced system tools for businesses
+- [ ] Volume licensing - For enterprises and educational institutions
+- [ ] Managed services - Deployment and lifecycle management
+
+### Long-term Vision (v0.4.0+)
 - [ ] Unified app store (curated + AUR integration)
 - [ ] System recovery/snapshot capabilities
 - [ ] Live patching for security updates

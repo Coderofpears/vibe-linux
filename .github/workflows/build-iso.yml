@@ -31,21 +31,41 @@ jobs:
       - name: Install dependencies
         run: |
           pacman -Syu --noconfirm archiso archinstall python python-psutil bubblewrap git rsync
+          # For aarch64 cross-compilation support
+          pacman -S --noconfirm qemu-system-aarch64 qemu-system-x86 || true
       
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
       
+      - name: Make build script executable
+        run: |
+          chmod +x scripts/build-iso-arch.sh
+          ls -la scripts/build-iso-arch.sh
+      
+      - name: Verify dependencies
+        run: |
+          echo "Checking mkarchiso..."
+          which mkarchiso || (echo "mkarchiso not found!" && exit 1)
+          mkarchiso --version || true
+          echo "Checking rsync..."
+          which rsync || (echo "rsync not found!" && exit 1)
+      
       - name: Build ISO for ${{ matrix.arch }}
         run: |
-          sudo ./scripts/build-iso-arch.sh ${{ matrix.arch }}
+          ./scripts/build-iso-arch.sh ${{ matrix.arch }}
       
       - name: Generate checksums
         run: |
-          cd out
-          sha256sum *.iso > SHA256SUMS
-          ls -lh
+          if [ -d out ] && [ -n "$(ls -A out/*.iso 2>/dev/null)" ]; then
+            cd out
+            sha256sum *.iso > SHA256SUMS
+            ls -lh
+          else
+            echo "Warning: No ISOs found in out/ directory"
+            mkdir -p out
+          fi
       
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
