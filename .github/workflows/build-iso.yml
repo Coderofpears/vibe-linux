@@ -1,0 +1,134 @@
+name: Build ISO Images
+
+on:
+  push:
+    tags:
+      - 'v*'
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  build:
+    name: Build ISO (${{ matrix.arch }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: [x86_64, aarch64]
+      fail-fast: false
+    container:
+      image: archlinux:latest
+      options: --privileged
+    permissions:
+      contents: read
+      packages: write
+    
+    steps:
+      - name: Install dependencies
+        run: |
+          pacman -Syu --noconfirm archiso archinstall python python-psutil bubblewrap git rsync
+      
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Build ISO for ${{ matrix.arch }}
+        run: |
+          sudo ./scripts/build-iso-arch.sh ${{ matrix.arch }}
+      
+      - name: Generate checksums
+        run: |
+          cd out
+          sha256sum *.iso > SHA256SUMS
+          ls -lh
+      
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: vibe-linux-${{ matrix.arch }}
+          path: out/
+          retention-days: 90
+  
+  release:
+    name: Create Release
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+      packages: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: build-artifacts
+      
+      - name: Organize release files
+        run: |
+          mkdir -p release-files
+          find build-artifacts -name "*.iso" -exec cp {} release-files/ \;
+          find build-artifacts -name "SHA256SUMS" -exec cp {} release-files/ \;
+          ls -lh release-files/
+      
+      - name: Create Release Notes
+        run: |
+          VERSION="${GITHUB_REF#refs/tags/}"
+          echo "# Vibe-Linux ${VERSION}" > release-notes.md
+          echo "" >> release-notes.md
+          echo "## Release Information" >> release-notes.md
+          echo "Built from commit: \`$(git rev-parse --short HEAD)\`" >> release-notes.md
+          echo "Date: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> release-notes.md
+          echo "" >> release-notes.md
+          echo "## Downloads" >> release-notes.md
+          echo "Both x86_64 and ARM64 (aarch64) architectures are supported." >> release-notes.md
+          echo "" >> release-notes.md
+          echo "### Installation" >> release-notes.md
+          echo "1. Download the ISO file for your architecture" >> release-notes.md
+          echo "2. Verify the SHA256 checksum" >> release-notes.md
+          echo "3. Flash to USB using Etcher, Ventoy, or \`dd\`" >> release-notes.md
+          echo "4. Boot and run the guided installer" >> release-notes.md
+          echo "" >> release-notes.md
+          echo "## Features" >> release-notes.md
+          echo "- KDE Plasma desktop with multiple UI presets (Default, Windows 11, macOS)" >> release-notes.md
+          echo "- Arch Linux rolling base with pacman package management" >> release-notes.md
+          echo "- Secure plugin runtime with sandboxing" >> release-notes.md
+          echo "- Multi-architecture support (x86_64 and ARM64)" >> release-notes.md
+          echo "- Performance profiles (Full, Lite, Performance)" >> release-notes.md
+      
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: release-files/*
+          body_path: release-notes.md
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  notify:
+    name: Notify Build Status
+    needs: [build]
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+      - name: Check build status
+        run: |
+          if [ "${{ needs.build.result }}" = "success" ]; then
+            echo "✅ ISO builds completed successfully!"
+            echo "x86_64 and ARM64 ISOs are available in artifacts."
+          else
+            echo "❌ ISO builds failed. Check logs for details."
+            exit 1
+          fi

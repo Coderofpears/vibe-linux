@@ -1,0 +1,33 @@
+[General]
+ColorScheme=BreezeLight
+Name=Breeze Light
+TerminalApplication=konsole
+fixed=SF Pro Display,10,-1,5,50,0,0,0,0,0
+font=SF Pro Display,10,-1,5,50,0,0,0,0,0
+menuFont=SF Pro Display,10,-1,5,50,0,0,0,0,0
+smallestReadableFont=SF Pro Display,8,-1,5,50,0,0,0,0,0
+toolBarFont=SF Pro Display,9,-1,5,50,0,0,0,0,0
+
+[KDE]
+SingleClick=false
+WidgetStyle=Breeze
+
+[Icons]
+Theme=breeze
+
+[PreviewSettings]
+MaximumRemoteSize=0
+
+[Colors:Button]
+BackgroundColor=245,245,245
+
+[Colors:View]
+BackgroundColor=255,255,255
+
+[Colors:Window]
+BackgroundColor=245,245,245
+ForegroundColor=25,25,25
+
+[Colors:Tooltip]
+BackgroundColor=0,0,0
+ForegroundColor=255,255,255

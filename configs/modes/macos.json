@@ -1,0 +1,49 @@
+{
+  "name": "macOS Ventura UI/UX Preset",
+  "description": "KDE Plasma configured to look and feel like macOS Ventura",
+  "author": "Vibe-Linux",
+  "version": "1.0",
+  "target": "kde",
+  "includes": {
+    "kdeglobals": "configs/macos/kdeglobals",
+    "plasmashellrc": "configs/macos/plasmashellrc",
+    "kwinrc": "configs/macos/kwinrc",
+    "kglobalshortcutsrc": "configs/macos/kglobalshortcutsrc",
+    "kscreenlockerrc": "configs/macos/kscreenlockerrc",
+    "sddm.conf": "configs/macos/sddm.conf"
+  },
+  "settings": {
+    "theme": "BreezeLight",
+    "colorScheme": "BreezeLight",
+    "font": "SF Pro Display",
+    "iconTheme": "breeze",
+    "cursorTheme": "breeze_cursors",
+    "windowDecoration": "BreezeLight",
+    "plasmaTheme": "default",
+    "panel": {
+      "position": "top",
+      "thickness": "32px",
+      "autoHide": false,
+      "windowButtons": [
+        "appmenu",
+        "taskmanager",
+        "systemtray",
+        "digitalclock"
+      ]
+    },
+    "desktopEffects": {
+      "enabled": true,
+      "animations": "smooth",
+      "slideTime": 150
+    }
+  },
+  "uiAspects": [
+    "Top menu bar (like macOS)",
+    "Light color scheme with clean, minimal design",
+    "Double-click to open (standard macOS behavior)",
+    "Subtle window shadows and effects",
+    "macOS-style keyboard shortcuts (Cmd key mapping)",
+    "SF Pro Display font for authentic macOS appearance",
+    "Minimalist window decorations with red/yellow/green buttons on left"
+  ]
+}
