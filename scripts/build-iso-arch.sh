@@ -77,17 +77,42 @@ sed -i.bak "s/^arch=.*/arch=\"${ARCH}\"/" "${PROFILEDEF}"
 if [[ "${ARCH}" == "aarch64" ]]; then
   echo "  Setting ARM64 boot configuration..."
   # ARM64 boot configuration
-  sed -i.bak 's/^bootmodes=.*/bootmodes=("uefi-aa64.grub.esp")/' "${PROFILEDEF}"
+  sed -i.bak 's/^bootmodes=.*/bootmodes=("uefi.grub")/' "${PROFILEDEF}"
   sed -i.bak 's/^airootfs_image_tool_options=.*/airootfs_image_tool_options=("-comp" "xz" "-b" "1M" "-Xdict-size" "1M")/' "${PROFILEDEF}"
 else
   echo "  Setting x86_64 boot configuration..."
   # x86_64 boot configuration
-  sed -i.bak 's/^bootmodes=.*/bootmodes=("bios.syslinux.mbr" "bios.syslinux.eltorito" "uefi-ia32.grub.esp" "uefi-x64.grub.esp")/' "${PROFILEDEF}"
+  sed -i.bak 's/^bootmodes=.*/bootmodes=("bios.syslinux" "uefi.grub")/' "${PROFILEDEF}"
   sed -i.bak 's/^airootfs_image_tool_options=.*/airootfs_image_tool_options=("-comp" "xz" "-Xbcj" "x86" "-b" "1M" "-Xdict-size" "1M")/' "${PROFILEDEF}"
 fi
 
 # Clean up backup files
 rm -f "${PROFILEDEF}.bak"
+
+# Ensure required bootloader config directories exist for selected boot modes
+RELENG_PROFILE="/usr/share/archiso/configs/releng"
+if [[ "${ARCH}" == "x86_64" ]]; then
+  if [[ ! -d "${STAGED_PROFILE}/syslinux" ]]; then
+    if [[ -d "${RELENG_PROFILE}/syslinux" ]]; then
+      echo "Adding syslinux config from releng profile..."
+      cp -a "${RELENG_PROFILE}/syslinux" "${STAGED_PROFILE}/syslinux"
+    else
+      echo "Error: Missing ${STAGED_PROFILE}/syslinux and releng syslinux template not found at ${RELENG_PROFILE}/syslinux" >&2
+      exit 1
+    fi
+  fi
+fi
+
+if [[ ! -d "${STAGED_PROFILE}/grub" ]]; then
+  if [[ -d "${RELENG_PROFILE}/grub" ]]; then
+    echo "Adding grub config from releng profile..."
+    cp -a "${RELENG_PROFILE}/grub" "${STAGED_PROFILE}/grub"
+  else
+    echo "Error: Missing ${STAGED_PROFILE}/grub and releng grub template not found at ${RELENG_PROFILE}/grub" >&2
+    exit 1
+  fi
+fi
+
 
 echo ""
 echo "Starting mkarchiso build..."
