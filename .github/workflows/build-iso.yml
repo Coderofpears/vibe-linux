@@ -34,10 +34,10 @@ jobs:
           pacman -Sy --noconfirm
           
           echo "Installing archiso and build tools..."
-          pacman -S --noconfirm archiso archinstall python python-psutil bubblewrap git rsync curl base-devel
+          pacman -S --noconfirm archiso archinstall grub syslinux python python-psutil bubblewrap git rsync curl base-devel
           
           echo "Dependencies installed:"
-          pacman -Q archiso archinstall python rsync git
+          pacman -Q archiso archinstall grub syslinux python rsync git
       
       - name: Checkout code
         uses: actions/checkout@v4
@@ -71,6 +71,15 @@ jobs:
             exit 1
           fi
           
+
+          echo ""
+          echo "Checking grub-install..."
+          if command -v grub-install >/dev/null 2>&1; then
+            echo "✓ grub-install found at $(which grub-install)"
+          else
+            echo "✗ grub-install not found in PATH"
+            exit 1
+          fi
           echo ""
           echo "Checking rsync..."
           which rsync || exit 1

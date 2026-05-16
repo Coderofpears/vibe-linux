@@ -1,6 +1,6 @@
 base
-linux-aarch64
-linux-firmware-aarch64
+linux
+linux-firmware
 archinstall
 archiso
 sudo
@@ -30,7 +30,6 @@ pacman-contrib
 reflector
 efibootmgr
 grub
-grub-efi-aarch64
 os-prober
 dosfstools
 e2fsprogs

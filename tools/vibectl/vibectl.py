@@ -141,6 +141,17 @@ def cmd_diagnostics(_args: argparse.Namespace) -> int:
     return 0
 
 
+def available_modes() -> list[str]:
+    names: set[str] = set()
+    for root in MODE_DIRS:
+        if not root.exists():
+            continue
+        for path in root.glob("*.json"):
+            names.add(path.stem)
+    if not names:
+        return ["full", "lite", "performance"]
+    return sorted(names)
+
 def load_mode(mode: str) -> dict:
     for root in MODE_DIRS:
         candidate = root / f"{mode}.json"
@@ -271,7 +282,7 @@ def build_parser() -> argparse.ArgumentParser:
     diagnostics.set_defaults(func=cmd_diagnostics)
 
     mode = sub.add_parser("mode", help="switch performance profile")
-    mode.add_argument("mode", choices=["full", "lite", "performance"])
+    mode.add_argument("mode", choices=available_modes())
     mode.add_argument("--dry-run", action="store_true")
     mode.set_defaults(func=cmd_mode)
 

@@ -1,7 +1,7 @@
 # Vibe-Linux OS v0.1.0 Release Notes
 
-**Release Date:** 2026-05-01  
-**Version:** 0.1.0 (First Public Release)
+**Release Date:** 2026-05-15  
+**Version:** 0.1.0 (First Public Release, Finalized)
 
 ## Overview
 
@@ -53,6 +53,10 @@ Familiar shortcuts and UI patterns mapped to KDE Plasma:
   - Issue: Plugin CLI arguments were incorrectly processed twice
   - Fix: Proper if-else logic for command construction with/without arguments
   - Impact: Plugins now correctly receive command-line arguments
+- **Performance Mode Coverage**: Fixed `vibectl mode` to expose all shipped mode profiles
+  - Issue: CLI hard-coded mode choices to `full`, `lite`, and `performance` only
+  - Fix: Mode choices are now discovered dynamically from `configs/modes/*.json`
+  - Impact: `gaming` and `development` modes are now selectable from the CLI
 
 ## System Requirements
 
